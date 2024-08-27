@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Love</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      .main-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+      }
+
+      .header {
+        background: url("path-to-your-background-photo.jpg") no-repeat center
+          center;
+        background-size: cover;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 3rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .header-photo {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+
+      .header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .header p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .header button {
+        padding: 0.75rem 2rem;
+        background-color: #ff7e5f;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.3s ease;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header button:hover {
+        background-color: #feb47b;
+        color: #fff;
+      }
+
+      .header button:focus::before {
+        content: "🎉";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(2);
+        animation: bounce 0.6s ease-in-out infinite;
+        pointer-events: none;
+        font-size: 2rem;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0.5;
+        }
+      }
+
+      .letter-container {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 3rem;
+        position: relative;
+        text-align: center;
+      }
+
+      .letter-container .letter-photo {
+        border-radius: 50%;
+        max-width: 150px;
+        margin-bottom: 1.5rem;
+      }
+
+      .letter-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      .letter-container p {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.75;
+      }
+
+      .photo-collage {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .photo-collage img {
+        border-radius: 10px;
+        max-width: 100px;
+        height: auto;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s, visibility 0.5s;
+      }
+
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .overlay-content {
+        
+        color: white;
+        max-width: 80%;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 2rem;
+        border-radius: 10px;
+      }
+
+      .overlay-content h2 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .overlay-content p {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .overlay-content button {
+       
+       
+        display: flex;
+        float: right;
+        background-color: #ff7e5f;
+        border: none;
+        border-radius: 50%;
+        font-size: 1rem;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .overlay-content button:hover {
+        transform: scale(1.1);
+      }
+
+      .emoji-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 20;
+        overflow: hidden;
+      }
+
+      .emoji-animation span {
+        position: absolute;
+        font-size: 2rem;
+        animation: move 4s ease-in-out forwards;
+      }
+
+      @keyframes move {
+        0% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5) translateY(-50vh);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(2) translateY(-100vh);
+          opacity: 0;
+        }
+      }
+
+      .thumbnail {
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .thumbnail:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Header Section -->
+      <div class="header">
+        <img src="3.jpeg" alt="Your Photo" class="header-photo" />
+        <h1>To My Dearest Love, Aadha Darling ❤️</h1>
+        <p>
+          Your presence lights up my life every day. Here’s to celebrating our
+          love and the beautiful moments we've shared:
+        </p>
+        <button id="surpriseButton">Tap for a Sweet Surprise 💕</button>
+      </div>
+
+      <!-- Full-Screen Surprise Overlay -->
+      <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <button
+            id="closeExtraOverlay"
+            class="bg-pink-600 text-white py-2 px-4 rounded-full shadow-lg hover:bg-pink-500 transition duration-300 ease-in-out"
+          >
+            X
+          </button>
+          <p>Here are some more special things just for you:</p>
+
+          <p>1. A playlist of our favorite songs.</p>
+          <p>2. An audio call to reminisce our favorite memories.</p>
+          <p>3. A video call for a virtual date night.</p>
+          <p>4. Our social media accounts for a sneak peek into our moments.</p>
+          <p>5. Exploring our future life together.</p>
+         
+        </div>
+      </div>
+
+      <!-- Emoji Animation Container -->
+      <div id="emojiAnimation" class="emoji-animation"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const surpriseButton = document.getElementById("surpriseButton");
+        const closeExtraOverlay = document.getElementById("closeExtraOverlay");
+        const overlay = document.getElementById("overlay");
+        const emojiAnimation = document.getElementById("emojiAnimation");
+
+        surpriseButton.addEventListener("click", () => {
+          overlay.classList.add("active");
+          generateEmojiAnimation();
+        });
+
+        closeExtraOverlay.addEventListener("click", () => {
+          overlay.classList.remove("active");
+        });
+
+        function generateEmojiAnimation() {
+          const emojis = ["💖", "✨", "🎉", "💌", "💫"];
+          for (let i = 0; i < 30; i++) {
+            const span = document.createElement("span");
+            span.textContent =
+              emojis[Math.floor(Math.random() * emojis.length)];
+            span.style.left = Math.random() * 100 + "vw";
+            span.style.top = Math.random() * 100 + "vh";
+            emojiAnimation.appendChild(span);
+            setTimeout(() => span.remove(), 4000);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
